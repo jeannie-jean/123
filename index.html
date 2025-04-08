@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>註冊表單</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav>
+    註冊會員
+  </nav>
+  <main>
+    <form id="registerForm">
+      <div class="row">
+        <div class="col-50">
+          <div class="form-group">
+            <label for="username">使用者名稱*</label>
+            <input type="text" id="username" name="username" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">電子郵件*</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+
+          <div class="form-group">
+            <label for="password">密碼*</label>
+            <input type="password" id="password" name="password" required oninput="checkStrength()">
+            <div class="password-strength" id="strengthBar"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="confirmPassword">確認密碼*</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required>
+          </div>
+
+          <div class="form-group">
+            <label for="birthday">生日</label>
+            <input type="date" id="birthday" name="birthday">
+          </div>
+        </div>
+
+        <div class="col-50">
+          <fieldset>
+            <legend>性別</legend>
+            <label><input type="radio" name="gender" value="male"> 男</label>
+            <label><input type="radio" name="gender" value="female"> 女</label>
+            <label><input type="radio" name="gender" value="other"> 其他</label>
+          </fieldset>
+
+          <fieldset>
+            <legend>興趣</legend>
+            <label><input type="checkbox" name="interests" value="reading"> 閱讀</label>
+            <label><input type="checkbox" name="interests" value="travel"> 旅行</label>
+            <label><input type="checkbox" name="interests" value="music"> 音樂</label>
+            <label><input type="checkbox" name="interests" value="sports"> 運動</label>
+          </fieldset>
+          <div class="form-group">
+            <label for="about">自我介紹</label>
+            <textarea id="about" name="about" rows="5"></textarea>
+          </div>
+        </div>
+      </div>
+      <button type="submit">提交</button>
+    </form>
+  </main>
+  <footer>
+    &copy;  表單設計練習
+  </footer>
+  <script>
+    function checkStrength() {
+      const password = document.getElementById('password').value;
+      const bar = document.getElementById('strengthBar');
+      bar.className = 'password-strength';
+      if (password.length > 8 && /[A-Z]/.test(password) && /[0-9]/.test(password)) {
+        bar.classList.add('strength-strong');
+      } else if (password.length > 6) {
+        bar.classList.add('strength-medium');
+      } else {
+        bar.classList.add('strength-weak');
+      }
+    }
+  </script>
+</body>
+</html>
